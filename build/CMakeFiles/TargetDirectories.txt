@@ -1,0 +1,3 @@
+/Users/vismay/simple-compiler/build/CMakeFiles/hydro.dir
+/Users/vismay/simple-compiler/build/CMakeFiles/edit_cache.dir
+/Users/vismay/simple-compiler/build/CMakeFiles/rebuild_cache.dir

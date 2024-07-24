@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/Users/vismay/simple-compiler/build",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++ -g -std=gnu++20 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -mmacosx-version-min=14.1 -o CMakeFiles/hydro.dir/src/main.cpp.o -c /Users/vismay/simple-compiler/src/main.cpp",
+  "file": "/Users/vismay/simple-compiler/src/main.cpp",
+  "output": "CMakeFiles/hydro.dir/src/main.cpp.o"
+}
+]
