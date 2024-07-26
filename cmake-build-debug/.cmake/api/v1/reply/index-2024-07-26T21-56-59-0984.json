@@ -8,10 +8,10 @@
 		},
 		"paths" : 
 		{
-			"cmake" : "/private/var/folders/m0/_q5sfnqd69d_ck52h8fqyhpc0000gn/T/AppTranslocation/6210C71B-61DE-480A-8ED4-84BC81797CC4/d/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake",
-			"cpack" : "/private/var/folders/m0/_q5sfnqd69d_ck52h8fqyhpc0000gn/T/AppTranslocation/6210C71B-61DE-480A-8ED4-84BC81797CC4/d/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cpack",
-			"ctest" : "/private/var/folders/m0/_q5sfnqd69d_ck52h8fqyhpc0000gn/T/AppTranslocation/6210C71B-61DE-480A-8ED4-84BC81797CC4/d/CLion.app/Contents/bin/cmake/mac/aarch64/bin/ctest",
-			"root" : "/private/var/folders/m0/_q5sfnqd69d_ck52h8fqyhpc0000gn/T/AppTranslocation/6210C71B-61DE-480A-8ED4-84BC81797CC4/d/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.28"
+			"cmake" : "/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake",
+			"cpack" : "/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cpack",
+			"ctest" : "/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/ctest",
+			"root" : "/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.28"
 		},
 		"version" : 
 		{
@@ -26,7 +26,7 @@
 	"objects" : 
 	[
 		{
-			"jsonFile" : "codemodel-v2-fe04db53693af3a4af11.json",
+			"jsonFile" : "codemodel-v2-58337c821ca17958d4dd.json",
 			"kind" : "codemodel",
 			"version" : 
 			{
@@ -35,7 +35,7 @@
 			}
 		},
 		{
-			"jsonFile" : "cache-v2-9a380adfdb18fa3cb994.json",
+			"jsonFile" : "cache-v2-a038a4c95173dd79af3a.json",
 			"kind" : "cache",
 			"version" : 
 			{
@@ -44,7 +44,7 @@
 			}
 		},
 		{
-			"jsonFile" : "cmakeFiles-v1-c3c7fb7601dfb5891d46.json",
+			"jsonFile" : "cmakeFiles-v1-6f08f96d8159bc57d097.json",
 			"kind" : "cmakeFiles",
 			"version" : 
 			{
@@ -66,7 +66,7 @@
 	{
 		"cache-v2" : 
 		{
-			"jsonFile" : "cache-v2-9a380adfdb18fa3cb994.json",
+			"jsonFile" : "cache-v2-a038a4c95173dd79af3a.json",
 			"kind" : "cache",
 			"version" : 
 			{
@@ -76,7 +76,7 @@
 		},
 		"cmakeFiles-v1" : 
 		{
-			"jsonFile" : "cmakeFiles-v1-c3c7fb7601dfb5891d46.json",
+			"jsonFile" : "cmakeFiles-v1-6f08f96d8159bc57d097.json",
 			"kind" : "cmakeFiles",
 			"version" : 
 			{
@@ -86,7 +86,7 @@
 		},
 		"codemodel-v2" : 
 		{
-			"jsonFile" : "codemodel-v2-fe04db53693af3a4af11.json",
+			"jsonFile" : "codemodel-v2-58337c821ca17958d4dd.json",
 			"kind" : "codemodel",
 			"version" : 
 			{

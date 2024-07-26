@@ -2,6 +2,18 @@
 	"entries" : 
 	[
 		{
+			"name" : "CCACHE_PROGRAM",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a program."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "/opt/homebrew/bin/ccache"
+		},
+		{
 			"name" : "CMAKE_ADDR2LINE",
 			"properties" : 
 			[
@@ -55,7 +67,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/vismay/simple-compiler/cmake-build-debug"
+			"value" : "/Users/vismay/simple-compiler/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -91,19 +103,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "1"
-		},
-		{
-			"name" : "CMAKE_COLOR_DIAGNOSTICS",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Enable colored diagnostics throughout."
-				}
-			],
-			"type" : "BOOL",
-			"value" : "ON"
+			"value" : "3"
 		},
 		{
 			"name" : "CMAKE_COMMAND",
@@ -115,7 +115,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/private/var/folders/m0/_q5sfnqd69d_ck52h8fqyhpc0000gn/T/AppTranslocation/6210C71B-61DE-480A-8ED4-84BC81797CC4/d/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake"
+			"value" : "/opt/homebrew/Cellar/cmake/3.28.3/bin/cmake"
 		},
 		{
 			"name" : "CMAKE_CPACK_COMMAND",
@@ -127,7 +127,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/private/var/folders/m0/_q5sfnqd69d_ck52h8fqyhpc0000gn/T/AppTranslocation/6210C71B-61DE-480A-8ED4-84BC81797CC4/d/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cpack"
+			"value" : "/opt/homebrew/Cellar/cmake/3.28.3/bin/cpack"
 		},
 		{
 			"name" : "CMAKE_CTEST_COMMAND",
@@ -139,7 +139,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/private/var/folders/m0/_q5sfnqd69d_ck52h8fqyhpc0000gn/T/AppTranslocation/6210C71B-61DE-480A-8ED4-84BC81797CC4/d/CLion.app/Contents/bin/cmake/mac/aarch64/bin/ctest"
+			"value" : "/opt/homebrew/Cellar/cmake/3.28.3/bin/ctest"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER",
@@ -350,6 +350,18 @@
 			"value" : "CMAKE_DLLTOOL-NOTFOUND"
 		},
 		{
+			"name" : "CMAKE_EDIT_COMMAND",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to cache edit program executable."
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/opt/homebrew/Cellar/cmake/3.28.3/bin/ccmake"
+		},
+		{
 			"name" : "CMAKE_EXECUTABLE_FORMAT",
 			"properties" : 
 			[
@@ -446,16 +458,12 @@
 			"properties" : 
 			[
 				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
 					"name" : "HELPSTRING",
-					"value" : "Enable/Disable output of compile commands during generation."
+					"value" : "No help, variable specified on the command line."
 				}
 			],
 			"type" : "BOOL",
-			"value" : ""
+			"value" : "TRUE"
 		},
 		{
 			"name" : "CMAKE_EXTRA_GENERATOR",
@@ -479,7 +487,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/vismay/simple-compiler/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "/Users/vismay/simple-compiler/build/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -590,12 +598,16 @@
 			"properties" : 
 			[
 				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "Program used to build from build.ninja files."
 				}
 			],
-			"type" : "UNINITIALIZED",
-			"value" : "/private/var/folders/m0/_q5sfnqd69d_ck52h8fqyhpc0000gn/T/AppTranslocation/6210C71B-61DE-480A-8ED4-84BC81797CC4/d/CLion.app/Contents/bin/ninja/mac/aarch64/ninja"
+			"type" : "FILEPATH",
+			"value" : "/opt/homebrew/bin/ninja"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS",
@@ -863,7 +875,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/private/var/folders/m0/_q5sfnqd69d_ck52h8fqyhpc0000gn/T/AppTranslocation/6210C71B-61DE-480A-8ED4-84BC81797CC4/d/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.28"
+			"value" : "/opt/homebrew/Cellar/cmake/3.28.3/share/cmake"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -1127,7 +1139,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/vismay/simple-compiler/cmake-build-debug"
+			"value" : "/Users/vismay/simple-compiler/build"
 		},
 		{
 			"name" : "hydrogen_clone_IS_TOP_LEVEL",
