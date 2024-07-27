@@ -1,27 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "tokenization.hpp"
 
-std::string tokens_to_asm(const std::vector<Token> &tokens) {
-    std::stringstream output;
-    output << "global _main\nsection .text\n\n_main:\n";
-
-    for (int i = 0; i < tokens.size(); i++) {
-        const Token &token = tokens.at(i);
-        if (token.type == TokenType::exit) {
-            if (i+1 < tokens.size() && tokens.at(i+1).type == TokenType::int_lit) {
-                if (i+2 < tokens.size() && tokens.at(i+2).type == TokenType::semi) {
-                    output << "    mov rax, 0x2000001\n";
-                    output << "    mov rdi, " << tokens.at(i+1).value.value() << "\n";
-                    output << "    syscall";
-                }
-            }
-        }
-    }
-
-    return output.str();
-};
+#include "generation.hpp"
 
 int main(int argc, char* argv[]) {  
     if (argc != 4) {
@@ -38,17 +19,30 @@ int main(int argc, char* argv[]) {
         input.close();
     } else {
         std::cerr << "Unable to open input file" << std::endl;
+        exit(EXIT_FAILURE);
     }
+
+    std::fstream output(argv[3], std::ios::out);
 
     Tokenizer tokenizer(std::move(contents_stream.str()));
     std::vector<Token> tokens = tokenizer.tokenize();
-    std::fstream output(argv[3], std::ios::out);
+
+    Parser parser(std::move(tokens));
+    std::optional<NodeExit> tree = parser.parse();
+
+    if (!tree.has_value()) {
+        std::cerr << "No exit statement found" << std::endl;
+        exit(EXIT_FAILURE);
+    }
+
+    Generator generator(tree.value());
 
     if (output.is_open()) {
-        output << tokens_to_asm(tokens);
+        output << generator.generate();
         output.close();
     } else {
         std::cerr << "Unable to open output file" << std::endl;
+        exit(EXIT_FAILURE);
     }
 
     system("nasm -f macho64 ./outputs/actual.asm -o ./outputs/actual.o");
