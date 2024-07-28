@@ -1,7 +1,8 @@
 # hydrogen_clone (compiler)
 
-**this is not my project; it's pretty much fully copied** \
-**all credits to [Pixeled](https://www.youtube.com/@pixeled-yt)** 
+*this is not my project; it's pretty much fully copied* \
+
+all credits to [Pixeled](https://www.youtube.com/@pixeled-yt) 
 
 description: just a casual follow-along practise run.
 
