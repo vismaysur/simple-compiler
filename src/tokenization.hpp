@@ -4,6 +4,11 @@ enum class TokenType {
     exit,
     int_lit,
     semi,
+    open_paren,
+    close_paren,
+    ident,
+    let,
+    eq,
 };
 
 struct Token {
@@ -26,15 +31,21 @@ public:
             if (std::isalpha(peek().value())) {
                 buf.push_back(consume());
                 while (peek().has_value() && std::isalnum(peek().value())) {
+
                     buf.push_back(consume());
                 }
                 if (buf == "exit") {
                     tokens.push_back({.type = TokenType::exit});
                     buf.clear();
                     continue;
+                } else if (buf == "let") {
+                    tokens.push_back({.type = TokenType::let});
+                    buf.clear();
+                    continue;
                 } else {
-                    std::cerr << "you messed up!; here1" << std::endl;
-                    exit(EXIT_FAILURE);
+                    tokens.push_back({.type = TokenType::ident, .value = buf});
+                    buf.clear();
+                    continue;
                 }
             } else if (std::isdigit(peek().value())) {
                 buf.push_back(consume());
@@ -44,9 +55,21 @@ public:
                 tokens.push_back({ .type = TokenType::int_lit, .value = buf });
                 buf.clear();
                 continue;
+            } else if (peek().value() == '(') {
+                consume();
+                tokens.push_back({ .type = TokenType::open_paren });
+                continue;
+            } else if (peek().value() == ')') {
+                consume();
+                tokens.push_back({ .type = TokenType::close_paren });
+                continue;
             } else if (peek().value() == ';') {
                 consume();
                 tokens.push_back({.type = TokenType::semi});
+                continue;
+            } else if (peek().value() == '=') {
+                consume();
+                tokens.push_back({.type = TokenType::eq});
                 continue;
             } else if (std::isspace(peek().value())) {
                 consume();
@@ -60,11 +83,11 @@ public:
         return tokens;
     }
 private:
-    [[nodiscard]] inline std::optional<char> peek(int ahead = 1) const {
-        if (m_index + ahead - 1 >= m_src.length()) {
+    [[nodiscard]] inline std::optional<char> peek(int offset = 0) const {
+        if (m_index + offset >= m_src.length()) {
             return {};
         } else {
-            return m_src.at(m_index + ahead - 1);
+            return m_src.at(m_index + offset);
         }
     }
 

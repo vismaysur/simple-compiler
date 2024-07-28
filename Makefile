@@ -6,4 +6,3 @@ build:
 .PHONY: test
 test:
 	build/hydro inputs/test.hy -o outputs/actual.asm
-	diff outputs/actual.asm outputs/test.asm

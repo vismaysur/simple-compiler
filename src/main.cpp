@@ -28,26 +28,26 @@ int main(int argc, char* argv[]) {
     std::vector<Token> tokens = tokenizer.tokenize();
 
     Parser parser(std::move(tokens));
-    std::optional<NodeExit> tree = parser.parse();
+    std::optional<NodeProg> prog = parser.parse_prog();
 
-    if (!tree.has_value()) {
-        std::cerr << "No exit statement found" << std::endl;
+    if (!prog.has_value()) {
+        std::cerr << "Invalid Program" << std::endl;
         exit(EXIT_FAILURE);
     }
 
-    Generator generator(tree.value());
+    Generator generator(prog.value());
 
     if (output.is_open()) {
-        output << generator.generate();
+        output << generator.gen_prog();
         output.close();
     } else {
-        std::cerr << "Unable to open output file" << std::endl;
+        std::cerr << "Unable to open and write to output file" << std::endl;
         exit(EXIT_FAILURE);
     }
 
     system("nasm -f macho64 ./outputs/actual.asm -o ./outputs/actual.o");
-    // system("ld -o ./outputs/out ./outputs/actual.o -macos_version_min 10.15 -lSystem");
-    // system("./outputs/out");
+    system("ld -o ./outputs/out ./outputs/actual.o -macos_version_min 10.15 -lSystem -syslibroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk");
+    system("./outputs/out; echo $?");
 
     return EXIT_SUCCESS;
 }
