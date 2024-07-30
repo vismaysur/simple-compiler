@@ -35,7 +35,7 @@ int main(int argc, char* argv[]) {
         exit(EXIT_FAILURE);
     }
 
-    Generator generator(prog.value());
+    Generator generator(std::move(prog.value()));
 
     if (output.is_open()) {
         output << generator.gen_prog();

@@ -14,4 +14,5 @@ add_executable(hydro src/main.cpp
         src/tokenization.hpp
         src/parser.hpp
         src/generation.hpp
+        src/arena.hpp
 )

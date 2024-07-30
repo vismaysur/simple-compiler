@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "hydro::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-hydro-Debug-f69f45a3a9290cea098f.json",
+					"jsonFile" : "target-hydro-Debug-0df6175ca9c887cda9c9.json",
 					"name" : "hydro",
 					"projectIndex" : 0
 				}
@@ -49,7 +49,7 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/vismay/simple-compiler/build",
+		"build" : "/Users/vismay/simple-compiler/cmake-build-debug",
 		"source" : "/Users/vismay/simple-compiler"
 	},
 	"version" : 
