@@ -28,6 +28,13 @@ _main:
   pop rax
   add rax, rbx
   push rax
+  mov rax, 5
+  push rax
+  push QWORD [rsp + 0]
+  mov rax, 0x2000001
+  pop rdi
+  syscall
+  add rsp, 8
   push QWORD [rsp + 0]
   mov rax, 0x2000001
   pop rdi

@@ -19,13 +19,14 @@ public:
                 gen->push("rax");
             }
             void operator() (const NodeTermIdent *term_ident) const {
-                if (!gen->m_vars.contains(term_ident->ident.value.value())) {
+                auto it = std::find_if(gen->m_vars.begin(), gen->m_vars.end(),
+                    [&](const Var &var) { return var.name == term_ident->ident.value.value();});
+                if (it == gen->m_vars.end()) {
                     std::cerr << "Undeclared identifier: " << term_ident->ident.value.value() << std::endl;
                     exit(EXIT_FAILURE);
                 }
-                const auto& var = gen->m_vars.at(term_ident->ident.value.value());
                 std::stringstream offset;
-                offset << "QWORD [rsp + " << (gen->m_stack_size-var.stack_loc-1)*8 << "]";
+                offset << "QWORD [rsp + " << (gen->m_stack_size-(*it).stack_loc-1)*8 << "]";
                 gen->push(offset.str());
             }
             void operator() (const NodeTermParen *term_paren) const {
@@ -106,12 +107,24 @@ public:
 
             void operator()(const NodeStmtLet *stmt_let) const
             {
-                if(gen->m_vars.contains(stmt_let->ident.value.value())) {
+                auto it = std::find_if(gen->m_vars.begin(), gen->m_vars.end(),
+                    [&](const Var &var) { return var.name == stmt_let->ident.value.value();});
+
+                if (it != gen->m_vars.end()) {
                     std::cerr << "Identifier already used: " << stmt_let->ident.value.value() << std::endl;
                     exit(EXIT_FAILURE);
                 }
-                gen->m_vars.insert({stmt_let->ident.value.value(), Var {.stack_loc = gen->m_stack_size}});
+
+                gen->m_vars.push_back(Var {.name = stmt_let->ident.value.value(), .stack_loc = gen->m_stack_size});
                 gen->gen_expr(stmt_let->expr);
+            }
+
+            void operator()(const NodeStmtScope *scope) const {
+                gen->begin_scope();
+                for (const NodeStmt* stmt: scope->statements) {
+                    gen->gen_stmt(stmt);
+                }
+                gen->end_scope();
             }
         };
 
@@ -145,12 +158,29 @@ private:
         m_stack_size--;
     }
 
+    void begin_scope() {
+        m_scopes.push_back(m_vars.size());
+    }
+
+    void end_scope() {
+        int cnt = 0;
+        while (m_vars.size() > m_scopes.back()) {
+            m_vars.pop_back();
+            cnt++;
+        }
+        m_output << "  add rsp, " << cnt * 8 << "\n";
+        m_stack_size -= cnt;
+        m_scopes.pop_back();
+    }
+
     struct Var {
+        std::string name;
         size_t stack_loc;
     };
 
     const NodeProg m_prog;
     std::stringstream m_output;
     size_t m_stack_size;
-    std::unordered_map<std::string, Var> m_vars {};
+    std::vector<Var> m_vars;
+    std::vector<size_t> m_scopes;
 };

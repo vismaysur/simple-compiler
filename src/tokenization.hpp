@@ -13,6 +13,8 @@ enum class TokenType {
     minus,
     multiply,
     divide,
+    open_curly,
+    close_curly,
 };
 
 std::optional<int> bin_prec(const TokenType type) {
@@ -93,7 +95,13 @@ public:
             } else if (peek().value() == '/') {
                 consume();
                 tokens.push_back({.type = TokenType::divide});
-            } else if (std::isspace(peek().value())) {
+            }  else if (peek().value() == '{') {
+                consume();
+                tokens.push_back({.type = TokenType::open_curly});
+            }  else if (peek().value() == '}') {
+                consume();
+                tokens.push_back({.type = TokenType::close_curly});
+            }  else if (std::isspace(peek().value())) {
                 consume();
             } else {
                 std::cerr << "Error in tokenization" << std::endl;
