@@ -1,3 +1,2 @@
-let x = 5 + 3;
-let y = 1 + x + 1;
-exit(x + y);
+let x = 2 * (4 - 2) / 2 + 1;
+exit(x);

@@ -121,7 +121,7 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "src/area.hpp",
+			"path" : "src/arena.hpp",
 			"sourceGroupIndex" : 1
 		}
 	],

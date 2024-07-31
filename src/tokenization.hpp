@@ -10,8 +10,25 @@ enum class TokenType {
     let,
     eq,
     plus,
+    minus,
     multiply,
+    divide,
 };
+
+std::optional<int> bin_prec(const TokenType type) {
+    switch(type) {
+        case TokenType::plus:
+        case TokenType::minus:
+            return 0;
+        case TokenType::multiply:
+        case TokenType::divide:
+            return 1;
+        default:
+            return {};
+    }
+}
+
+
 
 struct Token {
     TokenType type;
@@ -20,7 +37,7 @@ struct Token {
 
 class Tokenizer {
 public:
-    inline Tokenizer(std::string src)
+    explicit inline Tokenizer(std::string src)
         : m_src(std::move(src)) {
 
     }
@@ -77,9 +94,17 @@ public:
                 consume();
                 tokens.push_back({.type = TokenType::plus});
                 continue;
+            } else if (peek().value() == '-') {
+                consume();
+                tokens.push_back({.type = TokenType::minus});
+                continue;
             } else if (peek().value() == '*') {
                 consume();
                 tokens.push_back({.type = TokenType::multiply});
+                continue;
+            } else if (peek().value() == '/') {
+                consume();
+                tokens.push_back({.type = TokenType::divide});
                 continue;
             } else if (std::isspace(peek().value())) {
                 consume();
@@ -92,6 +117,7 @@ public:
 
         return tokens;
     }
+
 private:
     [[nodiscard]] inline std::optional<char> peek(int offset = 0) const {
         if (m_index + offset >= m_src.length()) {
