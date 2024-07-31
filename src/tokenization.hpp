@@ -50,21 +50,17 @@ public:
             if (std::isalpha(peek().value())) {
                 buf.push_back(consume());
                 while (peek().has_value() && std::isalnum(peek().value())) {
-
                     buf.push_back(consume());
                 }
                 if (buf == "exit") {
                     tokens.push_back({.type = TokenType::exit});
                     buf.clear();
-                    continue;
                 } else if (buf == "let") {
                     tokens.push_back({.type = TokenType::let});
                     buf.clear();
-                    continue;
                 } else {
                     tokens.push_back({.type = TokenType::ident, .value = buf});
                     buf.clear();
-                    continue;
                 }
             } else if (std::isdigit(peek().value())) {
                 buf.push_back(consume());
@@ -73,42 +69,32 @@ public:
                 }
                 tokens.push_back({ .type = TokenType::int_lit, .value = buf });
                 buf.clear();
-                continue;
             } else if (peek().value() == '(') {
                 consume();
                 tokens.push_back({ .type = TokenType::open_paren });
-                continue;
             } else if (peek().value() == ')') {
                 consume();
                 tokens.push_back({ .type = TokenType::close_paren });
-                continue;
             } else if (peek().value() == ';') {
                 consume();
                 tokens.push_back({.type = TokenType::semi});
-                continue;
             } else if (peek().value() == '=') {
                 consume();
                 tokens.push_back({.type = TokenType::eq});
-                continue;
             } else if (peek().value() == '+') {
                 consume();
                 tokens.push_back({.type = TokenType::plus});
-                continue;
             } else if (peek().value() == '-') {
                 consume();
                 tokens.push_back({.type = TokenType::minus});
-                continue;
             } else if (peek().value() == '*') {
                 consume();
                 tokens.push_back({.type = TokenType::multiply});
-                continue;
             } else if (peek().value() == '/') {
                 consume();
                 tokens.push_back({.type = TokenType::divide});
-                continue;
             } else if (std::isspace(peek().value())) {
                 consume();
-                continue;
             } else {
                 std::cerr << "Error in tokenization" << std::endl;
                 exit(EXIT_FAILURE);
